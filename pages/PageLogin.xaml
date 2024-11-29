@@ -1,0 +1,48 @@
+﻿<Page x:Class="ProjectForYp2.pages.PageLogin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectForYp2.pages"
+      mc:Ignorable="d" 
+        d:MinHeight="600" d:MinWidth="1200"
+      d:Height="800" d:Width="1600"
+      Title="PageLogin">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock 
+                Text="Логин"
+                FontSize="23pt"/>
+            <TextBox 
+                Height="40"
+                FontSize="21pt"
+                x:Name="login"
+                Margin="0 10 0 10"
+                VerticalContentAlignment="Center"
+                Width="300"/>
+            <TextBlock 
+                Text="Пароль"
+                FontSize="23pt"/>
+            <PasswordBox 
+                Height="40"
+                FontSize="21pt"
+                Margin="0 10 0 10"
+                x:Name="password"
+                VerticalContentAlignment="Center"
+                Width="300"/>
+        </StackPanel>
+            <DockPanel Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Width="310">
+            <Button
+                    Height="40" Width="150" Content="Вход" FontSize="16pt" x:Name="log" Click="log_Click"/>
+        </DockPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,34 @@
+﻿<Page x:Class="ProjectForYp2.pages.SecondPage.PageRequestUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectForYp2.pages.SecondPage"
+      mc:Ignorable="d" 
+      d:MinHeight="600" d:MinWidth="1200"
+      d:Height="800" d:Width="1600"
+      Title="PageRequestUser">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="back" Click="back_Click" Content="Назад" FontSize="19" Height="40" Width="150" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <DataGrid
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding}"
+                Name="UserGrid"
+                FontSize="15">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Номер заявки" FontSize="15" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Id_OrgTechType.Name}" Header="Тип оборудования" Width="*" FontSize="15"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding OrgTechManufacture}" Header="Производитель" FontSize="15" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding OrgTechModel}" Header="Модель" FontSize="15" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding OrgTechNumber}" Header="Серийный номер" FontSize="15" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Id_Statys.Name}" Header="Статус" FontSize="15" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Master.FirstName}" Header="Мастер" FontSize="15" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding RepairParts}" Header="Примечание" FontSize="15" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

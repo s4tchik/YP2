@@ -1,0 +1,91 @@
+﻿<Page x:Class="ProjectForYp2.pages.PageEditRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectForYp2.pages"
+      mc:Ignorable="d" 
+      d:MinHeight="450" d:MinWidth="800"
+      d:Height="800" d:Width="1600"
+      Title="PageEditRequest">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="121*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid
+            IsReadOnly="True"
+            Grid.Column="0" Grid.RowSpan="3" x:Name="UserGrid" FontSize="15" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Номер заявки" FontSize="14" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn FontSize="14" Width="*" Header="Оборудование">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="Id_OrgTechType.Name" />
+                            <Binding Path="OrgTechManufacture" />
+                            <Binding Path="OrgTechModel" />
+                            <Binding Path="OrgTechNumber" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Id_Statys.Name}" Header="Статус" FontSize="14" Width="*"/>
+                <DataGridTextColumn FontSize="14" Width="*" Header="Мастер">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="Master.Name" />
+                            <Binding Path="Master.FirstName" />
+                            <Binding Path="Master.LastName" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding RepairParts}" Header="Детали" FontSize="14" Width="*"/>
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Дата приема" FontSize="14" Width="*"/>
+                <DataGridTextColumn Binding="{Binding CompletionDate}" Header="Дата завершения" FontSize="14" Width="*"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="edit" FontSize="18" Click="edit_Click" Content="Изменить"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button 
+                                        Name="Edit" 
+                                        Click="Edit_Click_1" 
+                                        Height="30" 
+                                        Width="120"
+                                        Content="Посмотреть сводку"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Frame Grid.Column="1" x:Name="Frmedit" NavigationUIVisibility="Hidden" Grid.RowSpan="2" Grid.Row="1"/>
+        <Button Height="40" Width="150" x:Name="upddate" Click="upddate_Click" Content="Обновить" Grid.Row="2"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Height="40" >
+            <Button Grid.Column="1" Width="130" Margin="5" Name="sort" Click="sort_Click"
+                Content="Сортировать" VerticalAlignment="Center" HorizontalAlignment="Left"
+                FontSize="15pt" Height="31"/>
+            <TextBox Grid.Column="1" Width="190" Margin="5" Name="sort1"
+                 VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="13pt" 
+                 SelectionChanged="sort1_SelectionChanged" Height="30"/>
+        </StackPanel>
+        <Button Grid.Column="1" Content="Выход" FontSize="15pt" Width="70"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right" Margin="5" Name="Back" Click="Back_Click" Height="31"/>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Выполнено: " x:Name="welldonereq" FontSize="18"  Margin="5"/>
+            <TextBlock Text="В работе: " x:Name="workreq" FontSize="18" Margin="5"/>
+            <TextBlock Text="Новая заявка: " x:Name="newreq" FontSize="18" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Page>
